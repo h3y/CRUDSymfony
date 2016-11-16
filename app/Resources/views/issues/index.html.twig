@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Issues list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idis</th>
+                <th>Datepost</th>
+                <th>Title</th>
+                <th>Text</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for issue in issues %}
+            <tr>
+                <td><a href="{{ path('issues_show', { 'id': issue.id }) }}">{{ issue.id }}</a></td>
+                <td>{{ issue.idIs }}</td>
+                <td>{% if issue.datePost %}{{ issue.datePost|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ issue.title }}</td>
+                <td>{{ issue.text }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('issues_show', { 'id': issue.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('issues_edit', { 'id': issue.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('issues_new') }}">Create a new issue</a>
+        </li>
+    </ul>
+{% endblock %}

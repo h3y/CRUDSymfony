@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Premission</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ premission.id }}</td>
+            </tr>
+            <tr>
+                <th>Idpr</th>
+                <td>{{ premission.idPr }}</td>
+            </tr>
+            <tr>
+                <th>Iduser</th>
+                <td>{{ premission.idUser }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('premissions_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('premissions_edit', { 'id': premission.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

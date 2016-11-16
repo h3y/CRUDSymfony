@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Premissions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Idpr</th>
+                <th>Iduser</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for premission in premissions %}
+            <tr>
+                <td><a href="{{ path('premissions_show', { 'id': premission.id }) }}">{{ premission.id }}</a></td>
+                <td>{{ premission.idPr }}</td>
+                <td>{{ premission.idUser }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('premissions_show', { 'id': premission.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('premissions_edit', { 'id': premission.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('premissions_new') }}">Create a new premission</a>
+        </li>
+    </ul>
+{% endblock %}
